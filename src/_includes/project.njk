@@ -1,0 +1,70 @@
+---
+layout: base.njk
+---
+<main class="project-detail">
+  {% if video %}
+  <div class="project-video">
+    {% if videoLoop %}
+    <iframe src="https://player.vimeo.com/video/{{ video }}?autoplay=1&loop=1&muted=1&controls=0&title=0&byline=0&portrait=0&like=0&share=0&watchlater=0{% if videoColor %}&color={{ videoColor }}{% endif %}" style="aspect-ratio: {{ videoAspectRatio if videoAspectRatio else '16 / 9' }}; border: none; width: 100%; display: block;" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+    {% else %}
+    <iframe src="https://player.vimeo.com/video/{{ video }}?title=0&byline=0&portrait=0&like=0&share=0&watchlater=0{% if videoColor %}&color={{ videoColor }}{% endif %}" style="aspect-ratio: {{ videoAspectRatio if videoAspectRatio else '16 / 9' }}; border: none; width: 100%; display: block;" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+    {% endif %}
+  </div>
+  {% endif %}
+
+  <div class="project-info">
+    <h1>{{ title }}</h1>
+    {% if description %}
+    <p>{{ description }}</p>
+    {% endif %}
+  </div>
+
+  {% if sections.length %}
+  {% for section in sections %}
+    {% if section.heading %}
+    <h2 class="section-heading">{{ section.heading }}</h2>
+    {% endif %}
+    {% if section.images %}
+    <div class="project-images">
+      {% for img in section.images %}
+      <img src="{{ img.src }}" alt="{{ title }}" loading="lazy"{% if img.wide %} class="wide"{% endif %}>
+      {% endfor %}
+    </div>
+    {% endif %}
+    {% if section.videos %}
+    {% for vid in section.videos %}
+    <div class="project-video">
+      <iframe src="https://player.vimeo.com/video/{{ vid.id }}?title=0&byline=0&portrait=0&like=0&share=0&watchlater=0{% if videoColor %}&color={{ videoColor }}{% endif %}" style="aspect-ratio: {{ vid.aspectRatio if vid.aspectRatio else '16 / 9' }}; border: none; width: 100%; display: block;" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    {% endfor %}
+    {% endif %}
+  {% endfor %}
+  {% endif %}
+
+  {%- if images.length %}
+  <div class="project-images">
+    {% for img in images %}
+    <img src="{{ img.src }}" alt="{{ title }}" loading="lazy"{% if img.wide %} class="wide"{% endif %}>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  {%- if extraVideos.length %}
+  {% for ev in extraVideos %}
+  <div class="project-video"{% if ev.maxWidth %} style="max-width: {{ ev.maxWidth }}; margin-left: auto; margin-right: auto;"{% endif %}>
+    <iframe src="https://player.vimeo.com/video/{{ ev.id }}?title=0&byline=0&portrait=0&like=0&share=0&watchlater=0{% if videoColor %}&color={{ videoColor }}{% endif %}" style="aspect-ratio: {{ ev.aspectRatio if ev.aspectRatio else '16 / 9' }}; border: none; width: 100%; display: block;" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+  </div>
+  {% endfor %}
+  {% endif %}
+
+  {% if credits.length %}
+  <div class="project-credits">
+    <h3>Credits</h3>
+    <ul>
+      {% for credit in credits %}
+      <li><span>{{ credit.role }}</span> {{ credit.name }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+</main>

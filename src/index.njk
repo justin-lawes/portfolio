@@ -1,0 +1,20 @@
+---
+layout: base.njk
+activeNav: featured
+---
+<main>
+  <div class="project-grid">
+    {%- for project in collections.projects %}
+    {%- if "featured" in project.data.pages %}
+    <a href="{{ project.url }}" class="project-card">
+      {% if project.data.thumbnail %}
+      <img class="project-image" src="{{ project.data.thumbnail }}" alt="{{ project.data.title }}">
+      {% else %}
+      <div class="project-image"></div>
+      {% endif %}
+      <h3>{{ project.data.title }}</h3>
+    </a>
+    {%- endif %}
+    {%- endfor %}
+  </div>
+</main>

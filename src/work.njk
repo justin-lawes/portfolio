@@ -1,0 +1,30 @@
+---
+layout: base.njk
+activeNav: work
+---
+<main>
+  {% set projectOrder = [
+    "01-blend", "02-perplexity", "04-sonos-beam", "37-tomtom", "05-msk",
+    "38-nextdoor", "06-mailchimp", "07-lark-magic-share", "10-chase-bliss",
+    "11-agog", "08-whywater", "12-googleedu", "39-westwood", "09-grails-iii",
+    "40-bestfriendsclub", "20-exposure", "41-katerra", "42-red-hat",
+    "14-hootsuite", "15-reformation", "17-interiors-awards", "43-collaboration",
+    "44-sana"
+  ] %}
+  <div class="project-grid">
+    {%- for slug in projectOrder %}
+    {%- for project in collections.projects %}
+    {%- if project.fileSlug == slug %}
+    <a href="{{ project.url }}" class="project-card">
+      {% if project.data.thumbnail %}
+      <img class="project-image" src="{{ project.data.thumbnail }}" alt="{{ project.data.title }}">
+      {% else %}
+      <div class="project-image"></div>
+      {% endif %}
+      <h3>{{ project.data.title }}</h3>
+    </a>
+    {%- endif %}
+    {%- endfor %}
+    {%- endfor %}
+  </div>
+</main>

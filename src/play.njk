@@ -1,0 +1,30 @@
+---
+layout: base.njk
+activeNav: play
+---
+<main>
+  {% set projectOrder = [
+    "21-noodles", "03-bookboy", "22-chubbygreenpants", "16-something-savage-ipa",
+    "23-traverse-city", "24-sleepy-brandon", "25-yoga", "26-trumpetparty",
+    "27-clotharms", "13-sharpener", "28-shape-study", "29-monster-project",
+    "30-baby-wizard", "31-stepset", "18-operator", "19-pup-sneeze",
+    "32-dust-bud", "33-sitting", "34-blorp", "35-vacuum",
+    "36-pottery"
+  ] %}
+  <div class="project-grid">
+    {%- for slug in projectOrder %}
+    {%- for project in collections.projects %}
+    {%- if project.fileSlug == slug %}
+    <a href="{{ project.url }}" class="project-card">
+      {% if project.data.thumbnail %}
+      <img class="project-image" src="{{ project.data.thumbnail }}" alt="{{ project.data.title }}">
+      {% else %}
+      <div class="project-image"></div>
+      {% endif %}
+      <h3>{{ project.data.title }}</h3>
+    </a>
+    {%- endif %}
+    {%- endfor %}
+    {%- endfor %}
+  </div>
+</main>
