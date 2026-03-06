@@ -6,9 +6,9 @@ activeNav: music
   <div class="project-grid">
     {%- for project in collections.projects %}
     {%- if "music" in project.data.pages %}
-    <a href="{{ project.url }}" class="project-card">
+    <a href="{{ project.url | url }}" class="project-card">
       {% if project.data.thumbnail %}
-      <img class="project-image square" src="{{ project.data.thumbnail }}" alt="{{ project.data.title }}">
+      <img class="project-image square" src="{{ project.data.thumbnail | url }}" alt="{{ project.data.title }}">
       {% else %}
       <div class="project-image square"></div>
       {% endif %}

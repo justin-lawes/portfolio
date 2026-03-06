@@ -5,17 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ title }}{% if title %} — {% endif %}Justin Lawes</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/geist@1/dist/fonts/geist-sans/style.css">
-  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="{{ '/css/style.css' | url }}">
 </head>
 <body class="dark">
   <nav>
-    <a href="/" class="logo"><img src="/images/logo.png" alt="Justin Lawes"></a>
+    <a href="{{ '/' | url }}" class="logo"><img src="{{ '/images/logo.png' | url }}" alt="Justin Lawes"></a>
     <div class="nav-links">
-      <a href="/"{% if activeNav == "featured" %} class="active"{% endif %}>Featured</a>
-      <a href="/work/"{% if activeNav == "work" %} class="active"{% endif %}>Work</a>
-      <a href="/play/"{% if activeNav == "play" %} class="active"{% endif %}>Play</a>
-      <a href="/music/"{% if activeNav == "music" %} class="active"{% endif %}>Music</a>
-      <a href="/about/"{% if activeNav == "about" %} class="active"{% endif %}>About</a>
+      <a href="{{ '/' | url }}"{% if activeNav == "featured" %} class="active"{% endif %}>Featured</a>
+      <a href="{{ '/work/' | url }}"{% if activeNav == "work" %} class="active"{% endif %}>Work</a>
+      <a href="{{ '/play/' | url }}"{% if activeNav == "play" %} class="active"{% endif %}>Play</a>
+      <a href="{{ '/music/' | url }}"{% if activeNav == "music" %} class="active"{% endif %}>Music</a>
+      <a href="{{ '/about/' | url }}"{% if activeNav == "about" %} class="active"{% endif %}>About</a>
     </div>
   </nav>
 
