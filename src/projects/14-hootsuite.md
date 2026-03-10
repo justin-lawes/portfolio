@@ -1,6 +1,7 @@
 ---
 title: "Hootsuite // Everyone's On Social"
-thumbnail: /images/hootsuite.jpg
+thumbnail: /images/hootsuiteThumb.png
+wide: true
 pages:
   - featured
   - work
@@ -9,10 +10,12 @@ videoColor: "f6cd46"
 sections:
   - heading: GIFs
     images:
-      - src: /images/hootsuite-01.gif
       - src: /images/hootsuite-02.gif
-      - src: /images/hootsuite-03.gif
       - src: /images/hootsuite-04.gif
+      - src: /images/hootsuite-01.gif
+        wide: true
+      - src: /images/hootsuite-03.gif
+        wide: true
 description:
 credits:
   - role: Client

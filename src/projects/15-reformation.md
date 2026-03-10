@@ -1,6 +1,7 @@
 ---
 title: What Was the Reformation All About?
 thumbnail: /images/reformation.jpg
+wide: true
 pages:
   - featured
   - work

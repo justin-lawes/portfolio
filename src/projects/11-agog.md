@@ -1,6 +1,6 @@
 ---
 title: Agog Bumper
-thumbnail: /images/agog.jpg
+thumbnail: /images/agog-2.jpg
 pages:
   - featured
   - work

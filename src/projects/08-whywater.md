@@ -1,6 +1,7 @@
 ---
 title: Why Water
-thumbnail: /images/whywater.jpg
+thumbnail: /images/whyWater.jpeg
+wide: true
 pages:
   - featured
   - work

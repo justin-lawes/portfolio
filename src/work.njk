@@ -2,7 +2,7 @@
 layout: base.njk
 activeNav: work
 ---
-<main>
+<main id="main">
   {% set projectOrder = [
     "01-blend", "02-perplexity", "04-sonos-beam", "37-tomtom", "05-msk",
     "38-nextdoor", "06-mailchimp", "07-lark-magic-share", "10-chase-bliss",
@@ -15,16 +15,22 @@ activeNav: work
     {%- for slug in projectOrder %}
     {%- for project in collections.projects %}
     {%- if project.fileSlug == slug %}
-    <a href="{{ project.url | url }}" class="project-card">
+    <a href="{{ project.url | url }}" class="project-card{% if project.data.wide %} wide{% endif %}">
+      <div class="project-image-wrap">
       {% if project.data.thumbnail %}
-      <img class="project-image" src="{{ project.data.thumbnail | url }}" alt="{{ project.data.title }}">
+      <img class="project-image" src="{{ project.data.thumbnail | url }}" alt="{{ project.data.title }}" loading="lazy" decoding="async"{% if project.data.thumbnailPosition or project.data.thumbnailScale %} style="{% if project.data.thumbnailPosition %}object-position: {{ project.data.thumbnailPosition }};{% endif %}{% if project.data.thumbnailScale %}transform: scale({{ project.data.thumbnailScale }});{% endif %}"{% endif %}>
       {% else %}
       <div class="project-image"></div>
       {% endif %}
+      </div>
       <h3>{{ project.data.title }}</h3>
     </a>
     {%- endif %}
     {%- endfor %}
     {%- endfor %}
   </div>
+  <script>
+    var cards = document.querySelectorAll('.project-card');
+    sessionStorage.setItem('projectNav', JSON.stringify(Array.from(cards).map(function(c) { return c.getAttribute('href'); })));
+  </script>
 </main>

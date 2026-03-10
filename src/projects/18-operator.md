@@ -1,6 +1,7 @@
 ---
 title: Operator
-thumbnail: /images/operator.jpg
+thumbnail: /images/operator.png
+wide: true
 pages:
   - featured
   - play

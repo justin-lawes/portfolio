@@ -1,6 +1,7 @@
 ---
 title: Trumpet Party
 thumbnail: /images/trumpetparty.jpg
+wide: true
 pages:
   - play
 video: "137033349"

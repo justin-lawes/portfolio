@@ -1,6 +1,7 @@
 ---
 title: Lark - Magic Share
 thumbnail: /images/lark-magic-share.jpg
+wide: true
 pages:
   - featured
   - work

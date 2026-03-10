@@ -4,18 +4,28 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ title }}{% if title %} — {% endif %}Justin Lawes</title>
+  <meta name="description" content="{{ description if description else 'Justin Lawes is a freelance motion designer based in Portland, OR, working with studios like Buck, Giant Ant, and Pentagram.' }}">
+  <meta property="og:title" content="{{ title }}{% if title %} — {% endif %}Justin Lawes">
+  <meta property="og:description" content="{{ description if description else 'Freelance motion designer based in Portland, OR.' }}">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="{{ thumbnail if thumbnail else '/images/og-image.jpg' | url }}">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="{{ '/images/favicon.ico' | url }}" sizes="any">
+  <link rel="icon" href="{{ '/images/favicon.svg' | url }}" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="{{ '/images/apple-touch-icon.png' | url }}">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/geist@1/dist/fonts/geist-sans/style.css">
   <link rel="stylesheet" href="{{ '/css/style.css' | url }}">
 </head>
 <body class="dark">
-  <nav>
-    <a href="{{ '/' | url }}" class="logo"><img src="{{ '/images/logo.png' | url }}" alt="Justin Lawes"></a>
+  <a href="#main" class="skip-link">Skip to content</a>
+  <nav aria-label="Main navigation">
+    <a href="{{ '/' | url }}" class="logo"><img src="{{ '/images/logo.png' | url }}" alt="Justin Lawes — Home"></a>
     <div class="nav-links">
-      <a href="{{ '/' | url }}"{% if activeNav == "featured" %} class="active"{% endif %}>Featured</a>
-      <a href="{{ '/work/' | url }}"{% if activeNav == "work" %} class="active"{% endif %}>Work</a>
-      <a href="{{ '/play/' | url }}"{% if activeNav == "play" %} class="active"{% endif %}>Play</a>
-      <a href="{{ '/music/' | url }}"{% if activeNav == "music" %} class="active"{% endif %}>Music</a>
-      <a href="{{ '/about/' | url }}"{% if activeNav == "about" %} class="active"{% endif %}>About</a>
+      <a href="{{ '/' | url }}"{% if activeNav == "featured" %} class="active" aria-current="page"{% endif %}>Featured</a>
+      <a href="{{ '/work/' | url }}"{% if activeNav == "work" %} class="active" aria-current="page"{% endif %}>Work</a>
+      <a href="{{ '/play/' | url }}"{% if activeNav == "play" %} class="active" aria-current="page"{% endif %}>Play</a>
+      <a href="{{ '/music/' | url }}"{% if activeNav == "music" %} class="active" aria-current="page"{% endif %}>Music</a>
+      <a href="{{ '/about/' | url }}"{% if activeNav == "about" %} class="active" aria-current="page"{% endif %}>About</a>
     </div>
   </nav>
 
@@ -23,8 +33,13 @@
 
   <footer>
     <p>&copy; 2026 Justin Lawes</p>
-    <button class="dark-mode-toggle" onclick="document.body.classList.toggle('dark'); localStorage.setItem('dark', document.body.classList.contains('dark')); this.textContent = document.body.classList.contains('dark') ? '☀' : '☾'">☀</button>
+    <button class="dark-mode-toggle" aria-label="Toggle dark mode" onclick="document.body.classList.toggle('dark'); localStorage.setItem('dark', document.body.classList.contains('dark')); this.textContent = document.body.classList.contains('dark') ? '☀' : '☾'">☀</button>
   </footer>
-  <script>if (localStorage.getItem('dark') === 'false') document.body.classList.remove('dark');</script>
+  <script>
+    if (localStorage.getItem('dark') === 'false') document.body.classList.remove('dark');
+    document.querySelectorAll('.project-card, .project-detail > *, .about-content > *').forEach(function(el, i) {
+      el.style.animationDelay = (i * 0.05) + 's';
+    });
+  </script>
 </body>
 </html>

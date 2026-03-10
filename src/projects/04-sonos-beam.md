@@ -1,6 +1,7 @@
 ---
 title: Sonos Beam
 thumbnail: /images/sonos-beam.jpg
+wide: true
 pages:
   - featured
   - work
@@ -14,13 +15,13 @@ sections:
       - src: /images/sonos-beam-03.gif
       - src: /images/sonos-beam-04.gif
       - src: /images/sonos-beam-05.gif
-      - src: /images/sonos-beam-06.gif
+      - src: /images/sonos-beam-10.gif
   - heading: Process
     images:
+      - src: /images/sonos-beam-06.gif
       - src: /images/sonos-beam-07.gif
       - src: /images/sonos-beam-08.gif
       - src: /images/sonos-beam-09.gif
-      - src: /images/sonos-beam-10.gif
 description:
 credits:
   - role: Client

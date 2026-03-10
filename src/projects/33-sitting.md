@@ -7,9 +7,12 @@ video: "818158649"
 videoLoop: true
 videoColor: "d39a45"
 sections:
-  - videos:
+  - videoGrid: true
+    videos:
       - id: "818164782"
+        aspectRatio: "1 / 1"
       - id: "818163491"
+        aspectRatio: "1 / 1"
   - heading: Process
     images:
       - src: /images/sitting-01.png

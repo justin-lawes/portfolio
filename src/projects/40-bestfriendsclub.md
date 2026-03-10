@@ -1,6 +1,6 @@
 ---
 title: Best Friends Club
-thumbnail: /images/bestfriendsclub.jpg
+thumbnail: /images/bfc.jpeg
 pages:
   - work
 video: "158256838"

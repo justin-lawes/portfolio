@@ -1,6 +1,7 @@
 ---
 title: Chase Bliss Bumper
 thumbnail: /images/chase-bliss.jpg
+wide: true
 pages:
   - featured
   - work

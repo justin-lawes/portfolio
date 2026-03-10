@@ -1,6 +1,6 @@
 ---
 title: TomTom
-thumbnail: /images/tomtom.jpg
+thumbnail: /images/tomtom.jpeg
 pages:
   - work
 video: "204073000"

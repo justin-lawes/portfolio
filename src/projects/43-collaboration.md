@@ -1,6 +1,7 @@
 ---
 title: Collaboration
 thumbnail: /images/collaboration.jpg
+wide: true
 pages:
   - work
 video: "337395633"

@@ -1,6 +1,7 @@
 ---
 title: Traverse City
 thumbnail: /images/traverse-city.jpg
+wide: true
 pages:
   - play
 video:

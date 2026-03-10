@@ -1,6 +1,7 @@
 ---
 title: Sana
-thumbnail: /images/sana.jpg
+thumbnail: /images/sana.png
+thumbnailPosition: "56% center"
 pages:
   - work
 video: "338026004"
