@@ -10,7 +10,7 @@ videoSideBySide: true
 extraVideos:
   - id: "859207270"
     aspectRatio: "4 / 5"
-description:
+description: Logo animation for Perplexity AI, designed by Smith & Diction.
 credits:
   - role: Design
     name: Smith & Diction

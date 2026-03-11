@@ -37,12 +37,20 @@ html {
   to { opacity: 1; transform: translateY(0); }
 }
 
-main > .page-intro,
-main > .section-heading {
-  animation: fadeIn 0.3s ease-out;
+@keyframes fadeInOnly {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
-.project-card,
+main > .page-intro,
+main > .section-heading {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+.project-card {
+  animation: fadeInOnly 0.3s ease-out;
+}
+
 .project-detail > *,
 .about-content > * {
   opacity: 0;
@@ -94,7 +102,7 @@ body.dark .logo img {
 .nav-links a {
   text-decoration: none;
   color: #666;
-  font-size: 1rem;
+  font-size: 18px;
   font-weight: 500;
   transition: color 0.2s;
 }
@@ -116,7 +124,7 @@ main {
   max-width: 1200px;
   width: 100%;
   margin: 0 auto;
-  padding: 2rem 2rem 4rem;
+  padding: 1.5rem 2rem 4rem;
 }
 
 /* Hero */
@@ -184,15 +192,16 @@ body.dark .page-intro {
 }
 
 .section-heading {
-  font-size: 1.1rem;
+  font-size: 18px;
   font-weight: 500;
-  margin-bottom: 1rem;
+  margin-bottom: 2.5rem;
   margin-top: 2.5rem;
 }
 
 .section-heading:first-of-type {
   margin-top: 0;
 }
+
 
 .project-grid {
   display: grid;
@@ -245,7 +254,7 @@ body.dark .page-intro {
 
 .project-card h3 {
   font-size: 0.8rem;
-  font-weight: 500;
+  font-weight: 400;
   margin-bottom: 0.25rem;
   text-align: center;
 }
@@ -326,13 +335,6 @@ body.dark .about-separator {
   border-color: #1a1a1a;
 }
 
-.section-heading {
-  font-size: 1.1rem;
-  font-weight: 500;
-  margin-top: 2.5rem;
-  margin-bottom: 1rem;
-}
-
 /* Project prev/next nav */
 .project-nav {
   display: flex;
@@ -367,6 +369,71 @@ body.dark .project-nav-next:hover {
 }
 
 /* Project detail page */
+.password-gate {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  padding: 2rem;
+}
+
+.password-gate-inner {
+  text-align: center;
+  max-width: 360px;
+}
+
+.password-gate-inner h1 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.password-gate-inner > p {
+  color: #888;
+  font-size: 0.9rem;
+  margin-bottom: 2rem;
+}
+
+.password-gate form {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.password-gate input {
+  flex: 1;
+  padding: 0.6rem 1rem;
+  border: 1px solid #333;
+  border-radius: 4px;
+  background: transparent;
+  color: inherit;
+  font-size: 0.95rem;
+  font-family: inherit;
+}
+
+.password-gate input:focus {
+  outline: none;
+  border-color: #666;
+}
+
+.password-gate button {
+  padding: 0.6rem 1rem;
+  border: 1px solid #333;
+  border-radius: 4px;
+  background: transparent;
+  color: inherit;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.password-gate button:hover {
+  border-color: #666;
+}
+
+.password-error {
+  color: #e55;
+  font-size: 0.85rem;
+  margin-top: 1rem;
+}
+
 .project-detail {
   max-width: 1200px;
   padding: 1rem 2rem 4rem;
@@ -383,7 +450,6 @@ body.dark .project-nav-next:hover {
   overflow: hidden;
   margin-bottom: 2.5rem;
   position: relative;
-  background: #111;
 }
 
 .project-video iframe {
@@ -406,11 +472,36 @@ body.dark .project-nav-next:hover {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
+  align-items: center;
   margin-bottom: 2.5rem;
 }
 
 .video-pair .project-video {
   margin-bottom: 0;
+}
+
+.image-grid {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.image-grid img {
+  width: 100%;
+  display: block;
+  border-radius: 4px;
+}
+
+.image-grid-2 {
+  grid-template-columns: 1fr 1fr;
+}
+
+.image-grid-3 {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.image-grid-4 {
+  grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
 .video-grid {
@@ -459,12 +550,21 @@ body.dark .project-nav-next:hover {
   column-span: all;
 }
 
+.hero-image {
+  max-width: 65%;
+  margin: 0 auto 2.5rem;
+}
+.hero-image img {
+  width: 100%;
+  display: block;
+}
+
 .project-info {
   max-width: 640px;
 }
 
 .project-info h1 {
-  margin-bottom: 1rem;
+  margin-bottom: 2.5rem;
 }
 
 .project-info > p {
@@ -472,8 +572,21 @@ body.dark .project-nav-next:hover {
   margin-bottom: 2.5rem;
 }
 
+.project-info a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+.project-info a:hover {
+  color: #1a1a1a;
+}
+
+body.dark .project-info a:hover {
+  color: #fff;
+}
+
 .project-credits h3 {
-  font-size: 1.1rem;
+  font-size: 18px;
   font-weight: 500;
   margin-bottom: 0.75rem;
 }
@@ -558,6 +671,10 @@ body.dark .nav-links a.active {
 
 body.dark .project-card {
   color: #e0e0e0;
+}
+
+body.dark .project-image-wrap {
+  background: #222;
 }
 
 body.dark .project-image {

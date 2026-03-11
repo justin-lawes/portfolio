@@ -5,9 +5,13 @@ pages:
   - work
 video: "817984742"
 videoLoop: true
-videoColor: "d39a45"
+extraVideosAboveTitle: true
 extraVideos:
   - id: "817986006"
+    autoplay: true
+    loop: true
+    controls: false
+videoColor: "d39a45"
 description:
 credits:
   - role: Client

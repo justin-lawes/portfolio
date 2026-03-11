@@ -4,16 +4,14 @@ thumbnail: /images/chubbygreenpants.jpg
 pages:
   - play
 video:
+titleBelowImages: true
 sections:
-  - heading: Process
+  - sideBySide: true
     images:
-      - src: /images/chubbygreenpants-01.jpg
       - src: /images/chubbygreenpants-02.jpg
-      - src: /images/chubbygreenpants-03.jpg
-      - src: /images/chubbygreenpants-04.jpg
-      - src: /images/chubbygreenpants-05.jpg
-description: Personal Project
+      - src: /images/chubbygreenpants-01.jpg
+description:
 credits:
-  - role: Creator/Designer
+  - role: Designer
     name: Justin Lawes
 ---

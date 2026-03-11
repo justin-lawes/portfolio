@@ -5,6 +5,8 @@ pages:
   - featured
   - play
 video: "413282158"
+videoAspectRatio: "1 / 1"
+videoMaxWidth: "550px"
 videoColor: "ea769b"
 sections:
   - heading: Process
@@ -12,7 +14,7 @@ sections:
     images:
       - src: /images/pup-sneeze-01.jpg
       - src: /images/pup-sneeze-02.gif
-description: Collaboration with Sarah Beth Morgan. Sarah storyboarded and designed everything and I brought it to life in 3D.
+description: Collaborative project with Sarah Beth Morgan. She designed and storyboarded the piece and I built and animated it in 3D.
 credits:
   - role: Design
     name: Sarah Beth Morgan

@@ -1,7 +1,8 @@
 ---
 title: Something Savage IPA
-thumbnail: /images/something-savage-ipa.jpg
-thumbnailScale: 1
+thumbnail: /images/something-savage-ipa-can.png
+thumbnailPosition: "center 15%"
+thumbnailScale: "1.15"
 pages:
   - featured
   - play
@@ -28,7 +29,7 @@ sections:
         aspectRatio: "4 / 5"
       - id: "815500817"
         aspectRatio: "4 / 5"
-description: Daniel Savage designed an artist series can for House of Cans. I brought the can into 3D and made some fun loops.
+description: Daniel Savage designed a can for the House of Cans artist series. I created a set of 3D animated loops.
 credits:
   - role: Design
     name: Daniel Savage

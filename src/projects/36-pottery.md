@@ -9,6 +9,6 @@ images:
     wide: true
 description: Personal Project
 credits:
-  - role: Designer/Creator
+  - role: Designer
     name: Justin Lawes
 ---

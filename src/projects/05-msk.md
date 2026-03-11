@@ -8,6 +8,8 @@ video: "174256515"
 videoColor: "e5bb7d"
 description:
 credits:
+  - role: Studio
+    name: Hornet
   - role: Director
     name: Ege Soyuer
   - role: Executive Producer

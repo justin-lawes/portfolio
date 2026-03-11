@@ -6,7 +6,7 @@ pages:
   - work
 video: "1116319153"
 videoColor: "eaaecd"
-description: "Logo bumper for Agog: The Immersive Media Institute."
+description: 'Logo bumper for <a href="https://agog.org" target="_blank">Agog</a>: The Immersive Media Institute.'
 credits:
   - role: 3D Design
     name: Joseph Toreki, Justin Lawes

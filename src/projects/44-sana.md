@@ -7,10 +7,10 @@ pages:
 video: "338026004"
 videoAspectRatio: "1 / 1"
 videoColor: "f8cd00"
+videoSideBySide: true
 extraVideos:
   - id: "338029001"
     aspectRatio: "9 / 16"
-    maxWidth: "75%"
 description: Sana is a startup developing an AI-powered educational platform. Commissioned to animate geometry courses demonstrating the platform's capabilities.
 credits:
   - role: Creative Direction

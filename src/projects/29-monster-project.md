@@ -13,6 +13,6 @@ images:
     wide: true
 description: The Monster Project involves kids drawing monsters, then artists from around the world recreating them in their own styles, to help children recognize the power of their imaginations and encourage creative potential.
 credits:
-  - role: Artist/Illustrator
+  - role: Illustrator
     name: Justin Lawes
 ---

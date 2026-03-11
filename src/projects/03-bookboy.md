@@ -10,8 +10,9 @@ images:
     wide: true
   - src: /images/bookboy-02.jpg
   - src: /images/bookboy-03.jpg
-description: Personal Project
+description:
+titleBelowImages: true
 credits:
-  - role: Creator/Designer
+  - role: Designer
     name: Justin Lawes
 ---

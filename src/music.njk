@@ -3,7 +3,7 @@ layout: base.njk
 activeNav: music
 ---
 <main id="main">
-  <p class="page-intro">Alongside motion design, Justin writes and produces original music — playing in bands, releasing albums, and scoring animated projects. All album tracks are available for&nbsp;licensing.</p>
+  <p class="page-intro">Alongside motion design, Justin writes and produces original music — playing in bands, releasing albums, and scoring animated projects. All album tracks are available for&nbsp;<a href="mailto:justin.lawes@gmail.com">licensing</a>.</p>
   {% set albumOrder = [
     "45-music-placeholder-1",
     "48-music-placeholder-4",
@@ -12,7 +12,8 @@ activeNav: music
   {% set animationOrder = [
     "21-noodles",
     "16-something-savage-ipa",
-    "51-music-placeholder-7"
+    "51-music-placeholder-7",
+    "52-discord"
   ] %}
 
   <h2 class="section-heading">Albums</h2>
@@ -23,7 +24,7 @@ activeNav: music
     <a href="{{ project.url | url }}" class="project-card">
       <div class="project-image-wrap square">
       {% if project.data.thumbnail %}
-      <img class="project-image" src="{{ project.data.thumbnail | url }}" alt="{{ project.data.title }}" loading="lazy" decoding="async"{% if project.data.thumbnailPosition or project.data.thumbnailScale %} style="{% if project.data.thumbnailPosition %}object-position: {{ project.data.thumbnailPosition }};{% endif %}{% if project.data.thumbnailScale %}transform: scale({{ project.data.thumbnailScale }});{% endif %}"{% endif %}>
+      <img class="project-image" src="{{ project.data.thumbnail | url }}" alt="{{ project.data.title }}" loading="lazy" decoding="async"{% if project.data.thumbnailPosition or project.data.thumbnailScale or project.data.thumbnailFit %} style="{% if project.data.thumbnailPosition %}object-position: {{ project.data.thumbnailPosition }};{% endif %}{% if project.data.thumbnailScale %}transform: scale({{ project.data.thumbnailScale }});{% endif %}{% if project.data.thumbnailFit %}object-fit: {{ project.data.thumbnailFit }};{% endif %}"{% endif %}>
       {% else %}
       <div class="project-image"></div>
       {% endif %}
@@ -46,15 +47,12 @@ activeNav: music
     <a href="{{ project.url | url }}" class="project-card">
       <div class="project-image-wrap square">
       {% if project.data.thumbnail %}
-      <img class="project-image" src="{{ project.data.thumbnail | url }}" alt="{{ project.data.title }}" loading="lazy" decoding="async"{% if project.data.thumbnailPosition or project.data.thumbnailScale %} style="{% if project.data.thumbnailPosition %}object-position: {{ project.data.thumbnailPosition }};{% endif %}{% if project.data.thumbnailScale %}transform: scale({{ project.data.thumbnailScale }});{% endif %}"{% endif %}>
+      <img class="project-image" src="{{ project.data.thumbnail | url }}" alt="{{ project.data.title }}" loading="lazy" decoding="async"{% if project.data.thumbnailPosition or project.data.thumbnailScale or project.data.thumbnailFit %} style="{% if project.data.thumbnailPosition %}object-position: {{ project.data.thumbnailPosition }};{% endif %}{% if project.data.thumbnailScale %}transform: scale({{ project.data.thumbnailScale }});{% endif %}{% if project.data.thumbnailFit %}object-fit: {{ project.data.thumbnailFit }};{% endif %}"{% endif %}>
       {% else %}
       <div class="project-image"></div>
       {% endif %}
       </div>
       <h3>{{ project.data.title }}</h3>
-      {% if project.data.subtitle %}
-      <p class="project-subtitle">{{ project.data.subtitle }}</p>
-      {% endif %}
     </a>
     {%- endif %}
     {%- endfor %}

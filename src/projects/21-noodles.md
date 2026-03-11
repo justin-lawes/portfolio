@@ -24,7 +24,7 @@ sections:
         controls: false
     images:
       - src: /images/noodles-01.png
-description: Personal project exploring vellum and different texturing techniques in Houdini. Music was mostly made on my modular synth.
+description: Personal project built with Houdini's vellum solver and custom texturing techniques. The music was written on a modular synthesizer.
 credits:
   - role: Animation & Music
     name: Justin Lawes

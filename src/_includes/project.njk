@@ -22,7 +22,20 @@ layout: base.njk
   else { next.hidden = true; }
 })();
 </script>
-<main id="main" class="project-detail{% if wideVideos %} wide-videos{% endif %}">
+{% if passwordHash %}
+<div class="password-gate" id="passwordGate">
+  <div class="password-gate-inner">
+    <h1>{{ title }}</h1>
+    <p>This project is password protected.</p>
+    <form id="passwordForm" autocomplete="off">
+      <input type="password" id="passwordInput" placeholder="Enter password" autocomplete="off">
+      <button type="submit">→</button>
+    </form>
+    <p class="password-error" id="passwordError" style="display:none">Incorrect password</p>
+  </div>
+</div>
+{% endif %}
+<main id="main" class="project-detail{% if wideVideos %} wide-videos{% endif %}"{% if passwordHash %} style="display:none"{% endif %}>
   {% if video %}
   {% if videoSideBySide %}
   <div class="video-pair">
@@ -31,7 +44,7 @@ layout: base.njk
     </div>
     {% for ev in extraVideos %}
     <div class="project-video">
-      <iframe src="https://player.vimeo.com/video/{{ ev.id }}?{% if ev.autoplay %}autoplay=1&loop=1&muted=1&autopause=0&{% endif %}{% if ev.controls == false %}controls=0&{% endif %}title=0&byline=0&portrait=0&like=0&share=0&watchlater=0{% if videoColor %}&color={{ videoColor }}{% endif %}" style="aspect-ratio: {{ ev.aspectRatio if ev.aspectRatio else '16 / 9' }}; border: none; width: 100%; display: block;" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="{{ title }}"></iframe>
+      <iframe src="https://player.vimeo.com/video/{{ ev.id }}?{% if ev.autoplay %}autoplay=1&loop=1&muted=1&autopause=0&{% endif %}{% if ev.controls == false %}controls=0&{% endif %}title=0&byline=0&portrait=0&like=0&share=0&watchlater=0{% if videoColor %}&color={{ videoColor }}{% endif %}" style="aspect-ratio: {{ ev.aspectRatio if ev.aspectRatio else '16 / 9' }}; border: none; width: 100%; display: block;" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen loading="lazy" title="{{ title }}"></iframe>
     </div>
     {% endfor %}
   </div>
@@ -46,9 +59,26 @@ layout: base.njk
   {% endif %}
   {% endif %}
 
-  {% if description %}
+  {%- if extraVideos.length and not videoSideBySide and extraVideosAboveTitle %}
+  {% for ev in extraVideos %}
+  <div class="project-video"{% if ev.maxWidth %} style="max-width: {{ ev.maxWidth }}; margin-left: auto; margin-right: auto;"{% endif %}>
+    <iframe src="https://player.vimeo.com/video/{{ ev.id }}?{% if ev.autoplay %}autoplay=1&loop=1&muted=1&autopause=0&{% endif %}{% if ev.controls == false %}controls=0&{% endif %}title=0&byline=0&portrait=0&like=0&share=0&watchlater=0{% if videoColor %}&color={{ videoColor }}{% endif %}" style="aspect-ratio: {{ ev.aspectRatio if ev.aspectRatio else '16 / 9' }}; border: none; width: 100%; display: block;" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen loading="lazy" title="{{ title }}"></iframe>
+  </div>
+  {% endfor %}
+  {% endif %}
+
+  {% if heroImage %}
+  <div class="hero-image">
+    <img src="{{ heroImage | url }}" alt="{{ title }}">
+  </div>
+  {% endif %}
+
+  {% if not titleBelowImages %}
   <div class="project-info">
-    <p>{{ description }}</p>
+    <h1 class="project-title">{{ title }}</h1>
+    {% if description %}
+    <p>{{ description | safe }}</p>
+    {% endif %}
   </div>
   {% endif %}
 
@@ -63,12 +93,18 @@ layout: base.njk
     {% if section.heading %}
     <h2 class="section-heading">{{ section.heading }}</h2>
     {% endif %}
-    {% if section.sideBySide %}
+    {% if section.columns %}
+    <div class="image-grid image-grid-{{ section.columns }}">
+      {% for img in section.images %}
+      <img src="{{ img.src | url }}" alt="{{ title }}" loading="lazy">
+      {% endfor %}
+    </div>
+    {% elif section.sideBySide %}
     <div class="side-by-side">
       {% if section.videos %}
       {% for vid in section.videos %}
       <div class="project-video">
-        <iframe src="https://player.vimeo.com/video/{{ vid.id }}?{% if vid.autoplay %}autoplay=1&{% endif %}{% if vid.loop %}loop=1&{% endif %}{% if vid.autoplay %}muted=1&autopause=0&{% endif %}{% if vid.controls == false %}controls=0&{% endif %}title=0&byline=0&portrait=0&like=0&share=0&watchlater=0{% if videoColor %}&color={{ videoColor }}{% endif %}" style="aspect-ratio: {{ vid.aspectRatio if vid.aspectRatio else '16 / 9' }}; border: none; width: 100%; display: block;" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="{{ title }}"></iframe>
+        <iframe src="https://player.vimeo.com/video/{{ vid.id }}?{% if vid.autoplay %}autoplay=1&{% endif %}{% if vid.loop %}loop=1&{% endif %}{% if vid.autoplay %}muted=1&autopause=0&{% endif %}{% if vid.controls == false %}controls=0&{% endif %}title=0&byline=0&portrait=0&like=0&share=0&watchlater=0{% if videoColor %}&color={{ videoColor }}{% endif %}" style="aspect-ratio: {{ vid.aspectRatio if vid.aspectRatio else '16 / 9' }}; border: none; width: 100%; display: block;" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen loading="lazy" title="{{ title }}"></iframe>
       </div>
       {% endfor %}
       {% endif %}
@@ -98,7 +134,7 @@ layout: base.njk
     {% else %}
     {% for vid in section.videos %}
     <div class="project-video"{% if vid.maxWidth %} style="max-width: {{ vid.maxWidth }}; margin-left: auto; margin-right: auto;"{% endif %}>
-      <iframe src="https://player.vimeo.com/video/{{ vid.id }}?{% if vid.autoplay %}autoplay=1&{% endif %}{% if vid.loop %}loop=1&{% endif %}{% if vid.autoplay %}muted=1&autopause=0&{% endif %}{% if vid.controls == false %}controls=0&{% endif %}title=0&byline=0&portrait=0&like=0&share=0&watchlater=0{% if videoColor %}&color={{ videoColor }}{% endif %}" style="aspect-ratio: {{ vid.aspectRatio if vid.aspectRatio else '16 / 9' }}; border: none; width: 100%; display: block;" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="{{ title }}"></iframe>
+      <iframe src="https://player.vimeo.com/video/{{ vid.id }}?{% if vid.autoplay %}autoplay=1&{% endif %}{% if vid.loop %}loop=1&{% endif %}{% if vid.autoplay %}muted=1&autopause=0&{% endif %}{% if vid.controls == false %}controls=0&{% endif %}title=0&byline=0&portrait=0&like=0&share=0&watchlater=0{% if videoColor %}&color={{ videoColor }}{% endif %}" style="aspect-ratio: {{ vid.aspectRatio if vid.aspectRatio else '16 / 9' }}; border: none; width: 100%; display: block;" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen loading="lazy" title="{{ title }}"></iframe>
     </div>
     {% endfor %}
     {% endif %}
@@ -115,10 +151,19 @@ layout: base.njk
   </div>
   {% endif %}
 
-  {%- if extraVideos.length and not videoSideBySide %}
+  {% if titleBelowImages %}
+  <div class="project-info">
+    <h1 class="project-title">{{ title }}</h1>
+    {% if description %}
+    <p>{{ description | safe }}</p>
+    {% endif %}
+  </div>
+  {% endif %}
+
+  {%- if extraVideos.length and not videoSideBySide and not extraVideosAboveTitle %}
   {% for ev in extraVideos %}
   <div class="project-video"{% if ev.maxWidth %} style="max-width: {{ ev.maxWidth }}; margin-left: auto; margin-right: auto;"{% endif %}>
-    <iframe src="https://player.vimeo.com/video/{{ ev.id }}?title=0&byline=0&portrait=0&like=0&share=0&watchlater=0{% if videoColor %}&color={{ videoColor }}{% endif %}" style="aspect-ratio: {{ ev.aspectRatio if ev.aspectRatio else '16 / 9' }}; border: none; width: 100%; display: block;" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="{{ title }}"></iframe>
+    <iframe src="https://player.vimeo.com/video/{{ ev.id }}?{% if ev.autoplay %}autoplay=1&loop=1&muted=1&autopause=0&{% endif %}{% if ev.controls == false %}controls=0&{% endif %}title=0&byline=0&portrait=0&like=0&share=0&watchlater=0{% if videoColor %}&color={{ videoColor }}{% endif %}" style="aspect-ratio: {{ ev.aspectRatio if ev.aspectRatio else '16 / 9' }}; border: none; width: 100%; display: block;" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen loading="lazy" title="{{ title }}"></iframe>
   </div>
   {% endfor %}
   {% endif %}
@@ -134,3 +179,33 @@ layout: base.njk
   </div>
   {% endif %}
 </main>
+{% if passwordHash %}
+<script>
+(function() {
+  var hash = '{{ passwordHash }}';
+  var key = 'pw_' + window.location.pathname;
+  if (sessionStorage.getItem(key) === hash) {
+    document.getElementById('passwordGate').style.display = 'none';
+    document.getElementById('main').style.display = '';
+    return;
+  }
+  document.getElementById('passwordForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    var pw = document.getElementById('passwordInput').value;
+    crypto.subtle.digest('SHA-256', new TextEncoder().encode(pw)).then(function(buf) {
+      var arr = Array.from(new Uint8Array(buf));
+      var hex = arr.map(function(b) { return b.toString(16).padStart(2, '0'); }).join('');
+      if (hex === hash) {
+        sessionStorage.setItem(key, hash);
+        document.getElementById('passwordGate').style.display = 'none';
+        document.getElementById('main').style.display = '';
+      } else {
+        document.getElementById('passwordError').style.display = 'block';
+        document.getElementById('passwordInput').value = '';
+        document.getElementById('passwordInput').focus();
+      }
+    });
+  });
+})();
+</script>
+{% endif %}

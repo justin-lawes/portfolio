@@ -9,6 +9,6 @@ images:
   - src: /images/vacuum-02.jpg
 description: Personal Project
 credits:
-  - role: Creator/Designer
+  - role: Designer
     name: Justin Lawes
 ---
