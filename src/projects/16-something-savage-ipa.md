@@ -1,8 +1,9 @@
 ---
 title: Something Savage IPA
 thumbnail: /images/something-savage-ipa-can.png
-thumbnailPosition: "center 15%"
-thumbnailScale: "1.15"
+thumbnailPosition: "center 0%"
+thumbnailScale: "1.1"
+thumbnailOrigin: "center bottom"
 pages:
   - featured
   - play

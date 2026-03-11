@@ -7,7 +7,8 @@ video:
 images:
   - src: /images/vacuum-01.jpg
   - src: /images/vacuum-02.jpg
-description: Personal Project
+description:
+hideTitle: true
 credits:
   - role: Designer
     name: Justin Lawes

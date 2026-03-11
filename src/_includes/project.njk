@@ -69,11 +69,11 @@ layout: base.njk
 
   {% if heroImage %}
   <div class="hero-image">
-    <img src="{{ heroImage | url }}" alt="{{ title }}">
+    <img src="{{ heroImage | url }}" alt="{{ title }}"{% if '.gif' in heroImage %} eleventy:ignore{% endif %}>
   </div>
   {% endif %}
 
-  {% if not titleBelowImages %}
+  {% if not titleBelowImages and not hideTitle %}
   <div class="project-info">
     <h1 class="project-title">{{ title }}</h1>
     {% if description %}
@@ -94,9 +94,9 @@ layout: base.njk
     <h2 class="section-heading">{{ section.heading }}</h2>
     {% endif %}
     {% if section.columns %}
-    <div class="image-grid image-grid-{{ section.columns }}">
+    <div class="image-grid image-grid-{{ section.columns }}{% if section.padded %} image-grid-padded{% endif %}{% if section.bg %} image-grid-bg{% endif %}"{% if section.maxWidth %} style="max-width: {{ section.maxWidth }}; margin-left: auto; margin-right: auto;"{% endif %}>
       {% for img in section.images %}
-      <img src="{{ img.src | url }}" alt="{{ title }}" loading="lazy">
+      <img src="{{ img.src | url }}" alt="{{ title }}" loading="lazy"{% if '.gif' in img.src %} eleventy:ignore{% endif %}>
       {% endfor %}
     </div>
     {% elif section.sideBySide %}
@@ -110,7 +110,7 @@ layout: base.njk
       {% endif %}
       {% if section.images %}
       {% for img in section.images %}
-      <img src="{{ img.src | url }}" alt="{{ title }}" loading="lazy">
+      <img src="{{ img.src | url }}" alt="{{ title }}" loading="lazy"{% if '.gif' in img.src %} eleventy:ignore{% endif %}>
       {% endfor %}
       {% endif %}
     </div>
@@ -118,25 +118,40 @@ layout: base.njk
     {% if section.images %}
     <div class="project-images">
       {% for img in section.images %}
-      <img src="{{ img.src | url }}" alt="{{ title }}" loading="lazy"{% if img.wide %} class="wide"{% endif %}>
+      <img src="{{ img.src | url }}" alt="{{ title }}" loading="lazy"{% if img.wide %} class="wide"{% endif %}{% if '.gif' in img.src %} eleventy:ignore{% endif %}>
       {% endfor %}
     </div>
     {% endif %}
     {% if section.videos %}
     {% if section.videoGrid %}
-    <div class="video-grid">
+    {% if section.bg and section.gridCount %}<div class="video-mixed-bg image-grid-bg">{% endif %}
+    <div class="video-grid{% if section.bg and not section.gridCount %} image-grid-bg{% endif %}">
       {% for vid in section.videos %}
+      {% if not section.gridCount or loop.index0 < section.gridCount %}
       <div class="project-video">
         <iframe src="https://player.vimeo.com/video/{{ vid.id }}?autoplay=1&loop=1&muted=1&autopause=0&controls=0&title=0&byline=0&portrait=0&like=0&share=0&watchlater=0{% if videoColor %}&color={{ videoColor }}{% endif %}" style="aspect-ratio: {{ vid.aspectRatio if vid.aspectRatio else '16 / 9' }}; border: none; width: 100%; display: block;" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe>
       </div>
+      {% endif %}
       {% endfor %}
     </div>
+    {% if section.gridCount %}
+    {% for vid in section.videos %}
+    {% if loop.index0 >= section.gridCount %}
+    <div class="project-video video-full">
+      <iframe src="https://player.vimeo.com/video/{{ vid.id }}?autoplay=1&loop=1&muted=1&autopause=0&controls=0&title=0&byline=0&portrait=0&like=0&share=0&watchlater=0{% if videoColor %}&color={{ videoColor }}{% endif %}" style="aspect-ratio: {{ vid.aspectRatio if vid.aspectRatio else '16 / 9' }}; border: none; width: 100%; display: block;" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+    </div>
+    {% endif %}
+    {% endfor %}
+    {% endif %}
+    {% if section.bg and section.gridCount %}</div>{% endif %}
     {% else %}
+    {% if section.bg %}<div class="video-single-bg image-grid-bg">{% endif %}
     {% for vid in section.videos %}
     <div class="project-video"{% if vid.maxWidth %} style="max-width: {{ vid.maxWidth }}; margin-left: auto; margin-right: auto;"{% endif %}>
       <iframe src="https://player.vimeo.com/video/{{ vid.id }}?{% if vid.autoplay %}autoplay=1&{% endif %}{% if vid.loop %}loop=1&{% endif %}{% if vid.autoplay %}muted=1&autopause=0&{% endif %}{% if vid.controls == false %}controls=0&{% endif %}title=0&byline=0&portrait=0&like=0&share=0&watchlater=0{% if videoColor %}&color={{ videoColor }}{% endif %}" style="aspect-ratio: {{ vid.aspectRatio if vid.aspectRatio else '16 / 9' }}; border: none; width: 100%; display: block;" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen loading="lazy" title="{{ title }}"></iframe>
     </div>
     {% endfor %}
+    {% if section.bg %}</div>{% endif %}
     {% endif %}
     {% endif %}
     {% endif %}
@@ -146,12 +161,12 @@ layout: base.njk
   {%- if images.length %}
   <div class="project-images">
     {% for img in images %}
-    <img src="{{ img.src | url }}" alt="{{ title }}" loading="lazy"{% if img.wide %} class="wide"{% endif %}>
+    <img src="{{ img.src | url }}" alt="{{ title }}" loading="lazy"{% if img.wide %} class="wide"{% endif %}{% if '.gif' in img.src %} eleventy:ignore{% endif %}>
     {% endfor %}
   </div>
   {% endif %}
 
-  {% if titleBelowImages %}
+  {% if titleBelowImages and not hideTitle %}
   <div class="project-info">
     <h1 class="project-title">{{ title }}</h1>
     {% if description %}

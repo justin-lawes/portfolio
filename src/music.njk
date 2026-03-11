@@ -12,8 +12,7 @@ activeNav: music
   {% set animationOrder = [
     "21-noodles",
     "16-something-savage-ipa",
-    "51-music-placeholder-7",
-    "52-discord"
+    "51-music-placeholder-7"
   ] %}
 
   <h2 class="section-heading">Albums</h2>
@@ -24,7 +23,7 @@ activeNav: music
     <a href="{{ project.url | url }}" class="project-card">
       <div class="project-image-wrap square">
       {% if project.data.thumbnail %}
-      <img class="project-image" src="{{ project.data.thumbnail | url }}" alt="{{ project.data.title }}" loading="lazy" decoding="async"{% if project.data.thumbnailPosition or project.data.thumbnailScale or project.data.thumbnailFit %} style="{% if project.data.thumbnailPosition %}object-position: {{ project.data.thumbnailPosition }};{% endif %}{% if project.data.thumbnailScale %}transform: scale({{ project.data.thumbnailScale }});{% endif %}{% if project.data.thumbnailFit %}object-fit: {{ project.data.thumbnailFit }};{% endif %}"{% endif %}>
+      <img class="project-image" src="{{ project.data.thumbnail | url }}" alt="{{ project.data.title }}" loading="lazy" decoding="async"{% if project.data.thumbnailPosition or project.data.thumbnailScale or project.data.thumbnailFit or project.data.thumbnailOrigin %} style="{% if project.data.thumbnailPosition %}object-position: {{ project.data.thumbnailPosition }};{% endif %}{% if project.data.thumbnailScale %}transform: scale({{ project.data.thumbnailScale }});{% endif %}{% if project.data.thumbnailOrigin %}transform-origin: {{ project.data.thumbnailOrigin }};{% endif %}{% if project.data.thumbnailFit %}object-fit: {{ project.data.thumbnailFit }};{% endif %}"{% endif %}>
       {% else %}
       <div class="project-image"></div>
       {% endif %}
@@ -47,7 +46,7 @@ activeNav: music
     <a href="{{ project.url | url }}" class="project-card">
       <div class="project-image-wrap square">
       {% if project.data.thumbnail %}
-      <img class="project-image" src="{{ project.data.thumbnail | url }}" alt="{{ project.data.title }}" loading="lazy" decoding="async"{% if project.data.thumbnailPosition or project.data.thumbnailScale or project.data.thumbnailFit %} style="{% if project.data.thumbnailPosition %}object-position: {{ project.data.thumbnailPosition }};{% endif %}{% if project.data.thumbnailScale %}transform: scale({{ project.data.thumbnailScale }});{% endif %}{% if project.data.thumbnailFit %}object-fit: {{ project.data.thumbnailFit }};{% endif %}"{% endif %}>
+      <img class="project-image" src="{{ project.data.thumbnail | url }}" alt="{{ project.data.title }}" loading="lazy" decoding="async"{% if project.data.thumbnailPosition or project.data.thumbnailScale or project.data.thumbnailFit or project.data.thumbnailOrigin %} style="{% if project.data.thumbnailPosition %}object-position: {{ project.data.thumbnailPosition }};{% endif %}{% if project.data.thumbnailScale %}transform: scale({{ project.data.thumbnailScale }});{% endif %}{% if project.data.thumbnailOrigin %}transform-origin: {{ project.data.thumbnailOrigin }};{% endif %}{% if project.data.thumbnailFit %}object-fit: {{ project.data.thumbnailFit }};{% endif %}"{% endif %}>
       {% else %}
       <div class="project-image"></div>
       {% endif %}

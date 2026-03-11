@@ -12,6 +12,7 @@ images:
   - src: /images/bookboy-03.jpg
 description:
 titleBelowImages: true
+hideTitle: true
 credits:
   - role: Designer
     name: Justin Lawes

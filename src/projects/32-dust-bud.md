@@ -7,7 +7,8 @@ video:
 images:
   - src: /images/dust-bud-01.jpg
     wide: true
-description: Personal Project
+description:
+hideTitle: true
 credits:
   - role: Designer
     name: Justin Lawes

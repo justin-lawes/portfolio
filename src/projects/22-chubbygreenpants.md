@@ -11,6 +11,7 @@ sections:
       - src: /images/chubbygreenpants-02.jpg
       - src: /images/chubbygreenpants-01.jpg
 description:
+hideTitle: true
 credits:
   - role: Designer
     name: Justin Lawes
