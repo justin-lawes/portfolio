@@ -2,10 +2,10 @@
   "version": "0.0.1",
   "configurations": [
     {
-      "name": "eleventy-dev",
-      "runtimeExecutable": "npx",
-      "runtimeArgs": ["eleventy", "--serve", "--port", "8081"],
-      "port": 8081
+      "name": "portfolio",
+      "runtimeExecutable": "sh",
+      "runtimeArgs": ["-c", "cd /Users/justinlawes/Dropbox/01_STUDIO/02_internalProjects/ClaudeCode/portfolio && npx eleventy --serve --port $PORT"],
+      "autoPort": true
     }
   ]
 }
