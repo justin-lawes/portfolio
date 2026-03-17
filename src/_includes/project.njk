@@ -40,7 +40,7 @@ layout: base.njk
   {% if videoSideBySide %}
   <div class="video-pair">
     <div class="project-video">
-      <iframe src="https://player.vimeo.com/video/{{ video }}?{% if videoLoop and not videoControls %}autoplay=1&loop=1&muted=1&controls=0&{% elif videoLoop %}loop=1&{% endif %}title=0&byline=0&portrait=0&like=0&share=0&watchlater=0&pip=0&cc=0&transcript=0&save=0&collections=0{% if videoColor %}&color={{ videoColor }}{% endif %}" style="aspect-ratio: {{ videoAspectRatio if videoAspectRatio else '16 / 9' }}; border: none; width: 100%; display: block;" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="{{ title }}"></iframe>
+      <iframe src="https://player.vimeo.com/video/{{ video }}?{% if videoHash %}h={{ videoHash }}&{% endif %}{% if videoLoop and not videoControls %}autoplay=1&loop=1&muted=1&controls=0&{% elif videoLoop %}loop=1&{% endif %}title=0&byline=0&portrait=0&like=0&share=0&watchlater=0&pip=0&cc=0&transcript=0&save=0&collections=0{% if videoColor %}&color={{ videoColor }}{% endif %}" style="aspect-ratio: {{ videoAspectRatio if videoAspectRatio else '16 / 9' }}; border: none; width: 100%; display: block;" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="{{ title }}"></iframe>
     </div>
     {% for ev in extraVideos %}
     <div class="project-video">
@@ -53,7 +53,7 @@ layout: base.njk
     {% if videoLoop and not videoControls %}
     <iframe src="https://player.vimeo.com/video/{{ video }}?autoplay=1&loop=1&muted=1&controls=0&title=0&byline=0&portrait=0&like=0&share=0&watchlater=0{% if videoColor %}&color={{ videoColor }}{% endif %}" style="aspect-ratio: {{ videoAspectRatio if videoAspectRatio else '16 / 9' }}; border: none; width: 100%; display: block;" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="{{ title }}"></iframe>
     {% else %}
-    <iframe src="https://player.vimeo.com/video/{{ video }}?{% if videoLoop %}loop=1&{% endif %}title=0&byline=0&portrait=0&like=0&share=0&watchlater=0&pip=0&cc=0&transcript=0&save=0&collections=0{% if videoColor %}&color={{ videoColor }}{% endif %}" style="aspect-ratio: {{ videoAspectRatio if videoAspectRatio else '16 / 9' }}; border: none; width: 100%; display: block;" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="{{ title }}"></iframe>
+    <iframe src="https://player.vimeo.com/video/{{ video }}?{% if videoHash %}h={{ videoHash }}&{% endif %}{% if videoLoop %}loop=1&{% endif %}title=0&byline=0&portrait=0&like=0&share=0&watchlater=0&pip=0&cc=0&transcript=0&save=0&collections=0{% if videoColor %}&color={{ videoColor }}{% endif %}" style="aspect-ratio: {{ videoAspectRatio if videoAspectRatio else '16 / 9' }}; border: none; width: 100%; display: block;" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="{{ title }}"></iframe>
     {% endif %}
   </div>
   {% endif %}
