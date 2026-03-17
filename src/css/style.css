@@ -643,6 +643,7 @@ body.dark .project-nav-next:hover {
 }
 
 .hero-image {
+  width: 100%;
   max-width: 100%;
   margin: 0 auto 2.5rem;
 }
