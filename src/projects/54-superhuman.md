@@ -6,4 +6,9 @@ videoAspectRatio: "16 / 9"
 description: "Brand launch video for Superhuman, designed by Smith & Diction."
 pages:
   - work
+credits:
+  - role: Design
+    name: Smith & Diction
+  - role: Animation
+    name: Justin Lawes
 ---
