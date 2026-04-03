@@ -13,9 +13,12 @@
   <link rel="icon" href="{{ '/images/favicon-32x32.png' | url }}" type="image/png" sizes="32x32">
   <link rel="icon" href="{{ '/images/favicon.ico' | url }}" sizes="any">
   <link rel="apple-touch-icon" href="{{ '/images/apple-touch-icon.png' | url }}">
+  <link rel="preconnect" href="https://player.vimeo.com">
+  <link rel="preconnect" href="https://open.spotify.com">
   <link rel="preload" href="{{ '/fonts/Apercu.otf' | url }}" as="font" type="font/otf" crossorigin>
   <link rel="preload" href="{{ '/fonts/Apercu-Medium.otf' | url }}" as="font" type="font/otf" crossorigin>
-  <link rel="stylesheet" href="{{ '/css/style.css' | url }}">
+  <link rel="preload" href="{{ '/fonts/Apercu-Bold.otf' | url }}" as="font" type="font/otf" crossorigin>
+  <link rel="stylesheet" href="{{ '/css/style.min.css' | url }}">
 </head>
 <body class="dark">
   <a href="#main" class="skip-link">Skip to content</a>
@@ -38,9 +41,6 @@
   </footer>
   <script>
     if (localStorage.getItem('dark') === 'false') document.body.classList.remove('dark');
-    document.querySelectorAll('.project-card, .project-detail > *, .about-content > *').forEach(function(el, i) {
-      el.style.animationDelay = (i * 0.05) + 's';
-    });
   </script>
 </body>
 </html>

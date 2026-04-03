@@ -69,7 +69,7 @@ layout: base.njk
 
   {% if heroImage %}
   <div class="hero-image">
-    <img src="{{ heroImage | url }}" alt="{{ title }}"{% if '.gif' in heroImage %} eleventy:ignore{% endif %}>
+    <img src="{{ heroImage | url }}" alt="{{ title }}" loading="lazy" decoding="async"{% if '.gif' in heroImage %} eleventy:ignore{% endif %}>
   </div>
   {% endif %}
 
