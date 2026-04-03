@@ -10,12 +10,12 @@ videoColor: "d2a071"
 sections:
   - heading: My Shot
     images:
-      - src: /images/reformation-01.gif
+      - src: /images/reformation-01.mp4
         wide: true
   - heading: Process
     images:
-      - src: /images/reformation-02.gif
-      - src: /images/reformation-03.gif
+      - src: /images/reformation-02.mp4
+      - src: /images/reformation-03.mp4
 description:
 credits:
   - role: Creative Director and Writer

@@ -9,7 +9,7 @@ videoColor: "d67ed3"
 sections:
   - heading: My Shots
     images:
-      - src: /images/mailchimp-01.gif
+      - src: /images/mailchimp-01.mp4
         wide: true
 description:
 credits:

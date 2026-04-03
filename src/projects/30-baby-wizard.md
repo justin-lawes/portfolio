@@ -9,7 +9,7 @@ videoColor: "f079a1"
 sections:
   - heading: Process
     images:
-      - src: /images/baby-wizard-01.gif
+      - src: /images/baby-wizard-01.mp4
         wide: true
       - src: /images/baby-wizard-02.jpg
         wide: true

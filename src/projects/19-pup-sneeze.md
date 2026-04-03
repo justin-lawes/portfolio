@@ -13,7 +13,7 @@ sections:
     sideBySide: true
     images:
       - src: /images/pup-sneeze-01.jpg
-      - src: /images/pup-sneeze-02.gif
+      - src: /images/pup-sneeze-02.mp4
 description: Collaborative project with Sarah Beth Morgan. She designed and storyboarded the piece and I built and animated it in 3D.
 credits:
   - role: Design

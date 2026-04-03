@@ -10,11 +10,11 @@ videoColor: "f6cd46"
 sections:
   - heading: GIFs
     images:
-      - src: /images/hootsuite-02.gif
-      - src: /images/hootsuite-04.gif
-      - src: /images/hootsuite-01.gif
+      - src: /images/hootsuite-02.mp4
+      - src: /images/hootsuite-04.mp4
+      - src: /images/hootsuite-01.mp4
         wide: true
-      - src: /images/hootsuite-03.gif
+      - src: /images/hootsuite-03.mp4
         wide: true
 description:
 credits:

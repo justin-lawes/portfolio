@@ -6,8 +6,8 @@ pages:
 video: "204634543"
 videoColor: "56b053"
 images:
-  - src: /images/nextdoor-01.gif
-  - src: /images/nextdoor-02.gif
+  - src: /images/nextdoor-01.mp4
+  - src: /images/nextdoor-02.mp4
 description:
 credits:
   - role: Client

@@ -96,7 +96,11 @@ layout: base.njk
     {% if section.columns %}
     <div class="image-grid image-grid-{{ section.columns }}{% if section.padded %} image-grid-padded{% endif %}{% if section.bg %} image-grid-bg{% endif %}"{% if section.maxWidth %} style="max-width: {{ section.maxWidth }}; margin-left: auto; margin-right: auto;"{% endif %}>
       {% for img in section.images %}
+      {% if '.mp4' in img.src %}
+      <video src="{{ img.src | url }}" autoplay loop muted playsinline></video>
+      {% else %}
       <img src="{{ img.src | url }}" alt="{{ title }}" loading="lazy"{% if '.gif' in img.src %} eleventy:ignore{% endif %}>
+      {% endif %}
       {% endfor %}
     </div>
     {% elif section.sideBySide %}
@@ -110,7 +114,11 @@ layout: base.njk
       {% endif %}
       {% if section.images %}
       {% for img in section.images %}
+      {% if '.mp4' in img.src %}
+      <video src="{{ img.src | url }}" autoplay loop muted playsinline></video>
+      {% else %}
       <img src="{{ img.src | url }}" alt="{{ title }}" loading="lazy"{% if '.gif' in img.src %} eleventy:ignore{% endif %}>
+      {% endif %}
       {% endfor %}
       {% endif %}
     </div>
@@ -118,7 +126,11 @@ layout: base.njk
     {% if section.images %}
     <div class="project-images">
       {% for img in section.images %}
+      {% if '.mp4' in img.src %}
+      <video src="{{ img.src | url }}" autoplay loop muted playsinline{% if img.wide %} class="wide"{% endif %}></video>
+      {% else %}
       <img src="{{ img.src | url }}" alt="{{ title }}" loading="lazy"{% if img.wide %} class="wide"{% endif %}{% if '.gif' in img.src %} eleventy:ignore{% endif %}>
+      {% endif %}
       {% endfor %}
     </div>
     {% endif %}
@@ -161,7 +173,11 @@ layout: base.njk
   {%- if images.length %}
   <div class="project-images">
     {% for img in images %}
+    {% if '.mp4' in img.src %}
+    <video src="{{ img.src | url }}" autoplay loop muted playsinline{% if img.wide %} class="wide"{% endif %}></video>
+    {% else %}
     <img src="{{ img.src | url }}" alt="{{ title }}" loading="lazy"{% if img.wide %} class="wide"{% endif %}{% if '.gif' in img.src %} eleventy:ignore{% endif %}>
+    {% endif %}
     {% endfor %}
   </div>
   {% endif %}

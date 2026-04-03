@@ -10,7 +10,7 @@ videoColor: "e8543e"
 sections:
   - heading: Process
     images:
-      - src: /images/operator-01.gif
+      - src: /images/operator-01.mp4
         wide: true
 description: Personal Project
 credits:

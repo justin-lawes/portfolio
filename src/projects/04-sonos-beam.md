@@ -10,18 +10,18 @@ videoColor: "ffffff"
 sections:
   - heading: GIFs
     images:
-      - src: /images/sonos-beam-01.gif
-      - src: /images/sonos-beam-02.gif
-      - src: /images/sonos-beam-03.gif
-      - src: /images/sonos-beam-04.gif
-      - src: /images/sonos-beam-05.gif
-      - src: /images/sonos-beam-10.gif
+      - src: /images/sonos-beam-01.mp4
+      - src: /images/sonos-beam-02.mp4
+      - src: /images/sonos-beam-03.mp4
+      - src: /images/sonos-beam-04.mp4
+      - src: /images/sonos-beam-05.mp4
+      - src: /images/sonos-beam-10.mp4
   - heading: Process
     images:
-      - src: /images/sonos-beam-06.gif
-      - src: /images/sonos-beam-07.gif
-      - src: /images/sonos-beam-08.gif
-      - src: /images/sonos-beam-09.gif
+      - src: /images/sonos-beam-06.mp4
+      - src: /images/sonos-beam-07.mp4
+      - src: /images/sonos-beam-08.mp4
+      - src: /images/sonos-beam-09.mp4
 description:
 credits:
   - role: Client
