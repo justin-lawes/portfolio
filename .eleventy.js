@@ -12,6 +12,9 @@ module.exports = function (eleventyConfig) {
     formats: ["webp"],
     widths: [400, 800, 1200, "auto"],
     transformOnRequest: false,
+    sharpWebpOptions: {
+      quality: 90,
+    },
     defaultAttributes: {
       loading: "lazy",
       decoding: "async",
