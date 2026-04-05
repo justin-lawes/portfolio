@@ -3,8 +3,9 @@
   "configurations": [
     {
       "name": "portfolio",
-      "runtimeExecutable": "sh",
-      "runtimeArgs": ["-c", "cd /Users/justinlawes/Dropbox/01_STUDIO/02_internalProjects/ClaudeCode/portfolio && npx eleventy --serve --port $PORT"],
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["node_modules/@11ty/eleventy/cmd.cjs", "--serve", "--port", "$PORT"],
+      "cwd": "/Users/justinlawes/Dropbox/01_STUDIO/02_internalProjects/ClaudeCode/portfolio",
       "autoPort": true
     }
   ]
