@@ -417,6 +417,16 @@ body.dark .about-separator {
   padding: 1.5rem 0;
 }
 
+a.tool-card-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+a.tool-card-link:hover h2 {
+  text-decoration: underline;
+}
+
 .tool-card h2 {
   font-size: 1.1rem;
   font-weight: 500;

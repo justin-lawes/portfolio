@@ -1,0 +1,20 @@
+---
+layout: base.njk
+---
+<main id="main" class="tools">
+  <div class="tools-content">
+    <div class="tool-card">
+      <h1>{{ title }}</h1>
+      <p>{{ description }}</p>
+      <div class="tool-meta">
+        <span class="tool-version">{{ version }}</span>
+        <span class="tool-platform">{{ platform }}</span>
+      </div>
+      <div class="tool-downloads">
+        <a href="{{ downloadUrl }}" class="tool-download">Download ZIP</a>
+        <a href="{{ githubUrl }}" class="tool-download tool-download-secondary">View on GitHub</a>
+      </div>
+      {{ content | safe }}
+    </div>
+  </div>
+</main>
