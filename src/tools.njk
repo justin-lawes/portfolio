@@ -11,18 +11,29 @@ title: Tools
       <h2>Viewfinder</h2>
       <p>A minimal native macOS video player built for reviewing footage. Frame-accurate playback, shuttle controls, drawing annotations, timestamped comments, and customizable shortcuts.</p>
       <div class="tool-meta">
-        <span class="tool-platform">macOS 13+</span>
+        <span class="tool-version">v1.0.0</span>
+        <span class="tool-platform">macOS 13+ (Apple Silicon)</span>
       </div>
-      <a href="https://github.com/justin-lawes/ViewfinderNative" class="tool-download">View on GitHub</a>
+      <div class="tool-downloads">
+        <a href="https://github.com/justin-lawes/ViewfinderNative/releases/download/v1.0.0/Viewfinder-1.0.0-arm64.dmg" class="tool-download">Download DMG</a>
+        <a href="https://github.com/justin-lawes/ViewfinderNative" class="tool-download tool-download-secondary">View on GitHub</a>
+      </div>
       <details class="tool-instructions">
-        <summary>Setup Instructions</summary>
+        <summary>Install from DMG</summary>
+        <ol>
+          <li>Open the downloaded DMG</li>
+          <li>Drag Viewfinder into the Applications folder</li>
+          <li>Eject the DMG</li>
+          <li>On first launch, macOS will show a security warning — go to System Settings > Privacy & Security and click Open Anyway</li>
+        </ol>
+      </details>
+      <details class="tool-instructions">
+        <summary>Build from Source</summary>
         <ol>
           <li>Install Xcode Command Line Tools: <code>xcode-select --install</code></li>
-          <li>Clone the repo: <code>git clone https://github.com/justin-lawes/ViewfinderNative.git</code></li>
-          <li>Build: <code>cd ViewfinderNative && find Viewfinder -name "*.swift" | sort | tr '\n' ' ' | xargs swiftc -o build/Viewfinder -framework Cocoa -framework AVFoundation -framework CoreMedia -framework CoreImage</code></li>
-          <li>Install: <code>cp build/Viewfinder Viewfinder.app/Contents/MacOS/Viewfinder && cp -r Viewfinder.app /Applications/Viewfinder.app</code></li>
-          <li>Launch: <code>open /Applications/Viewfinder.app</code></li>
-          <li>On first launch, go to System Settings > Privacy & Security and click Open Anyway</li>
+          <li>Clone: <code>git clone https://github.com/justin-lawes/ViewfinderNative.git && cd ViewfinderNative</code></li>
+          <li>Build: <code>find Viewfinder -name "*.swift" | sort | tr '\n' ' ' | xargs swiftc -o build/Viewfinder -framework Cocoa -framework AVFoundation -framework CoreMedia -framework CoreImage</code></li>
+          <li>Install: <code>cp build/Viewfinder Viewfinder.app/Contents/MacOS/Viewfinder && cp -r Viewfinder.app /Applications/</code></li>
         </ol>
       </details>
       <details class="tool-instructions">
