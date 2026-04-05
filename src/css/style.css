@@ -89,25 +89,33 @@ main > .section-heading {
 .project-card:nth-child(n+13) { animation-delay: 0.6s; }
 
 .project-detail > *,
-.about-content > * {
+.about-content > *,
+.tools-content > * {
   opacity: 0;
   animation: fadeIn 0.3s ease-out forwards;
 }
 
 .project-detail > *:nth-child(1),
-.about-content > *:nth-child(1) { animation-delay: 0s; }
+.about-content > *:nth-child(1),
+.tools-content > *:nth-child(1) { animation-delay: 0s; }
 .project-detail > *:nth-child(2),
-.about-content > *:nth-child(2) { animation-delay: 0.05s; }
+.about-content > *:nth-child(2),
+.tools-content > *:nth-child(2) { animation-delay: 0.05s; }
 .project-detail > *:nth-child(3),
-.about-content > *:nth-child(3) { animation-delay: 0.1s; }
+.about-content > *:nth-child(3),
+.tools-content > *:nth-child(3) { animation-delay: 0.1s; }
 .project-detail > *:nth-child(4),
-.about-content > *:nth-child(4) { animation-delay: 0.15s; }
+.about-content > *:nth-child(4),
+.tools-content > *:nth-child(4) { animation-delay: 0.15s; }
 .project-detail > *:nth-child(5),
-.about-content > *:nth-child(5) { animation-delay: 0.2s; }
+.about-content > *:nth-child(5),
+.tools-content > *:nth-child(5) { animation-delay: 0.2s; }
 .project-detail > *:nth-child(6),
-.about-content > *:nth-child(6) { animation-delay: 0.25s; }
+.about-content > *:nth-child(6),
+.tools-content > *:nth-child(6) { animation-delay: 0.25s; }
 .project-detail > *:nth-child(n+7),
-.about-content > *:nth-child(n+7) { animation-delay: 0.3s; }
+.about-content > *:nth-child(n+7),
+.tools-content > *:nth-child(n+7) { animation-delay: 0.3s; }
 
 body {
   font-family: "Apercu", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
@@ -385,6 +393,148 @@ body.dark .about-separator {
 
 .about-details a:hover {
   border-color: #1a1a1a;
+}
+
+/* Tools page */
+.tools-content {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.tools-content h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.tools-intro {
+  color: #444;
+  margin-bottom: 2.5rem;
+}
+
+.tool-card {
+  border-top: 1px solid #e0e0e0;
+  padding: 1.5rem 0;
+}
+
+.tool-card h2 {
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-bottom: 0.35rem;
+}
+
+.tool-card > p {
+  color: #444;
+  font-size: 0.9rem;
+  margin-bottom: 0.75rem;
+}
+
+.tool-meta {
+  display: flex;
+  gap: 0.75rem;
+  font-size: 0.8rem;
+  color: #888;
+  margin-bottom: 1rem;
+}
+
+.tool-download {
+  display: inline-block;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #1a1a1a;
+  border: 1px solid #ccc;
+  padding: 0.4rem 1rem;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.tool-download:hover {
+  border-color: #1a1a1a;
+  background: #f5f5f5;
+}
+
+.tool-instructions {
+  margin-top: 1rem;
+  font-size: 0.85rem;
+}
+
+.tool-instructions summary {
+  cursor: pointer;
+  color: #666;
+  font-weight: 500;
+}
+
+.tool-instructions ol {
+  margin: 0.5rem 0 0 1.25rem;
+  color: #444;
+}
+
+.tool-instructions li {
+  margin-bottom: 0.25rem;
+}
+
+.tool-instructions code {
+  font-family: "SF Mono", "Menlo", monospace;
+  font-size: 0.78rem;
+  background: #f0f0f0;
+  padding: 0.1rem 0.35rem;
+  border-radius: 3px;
+  word-break: break-all;
+}
+
+.tool-shortcuts {
+  list-style: none;
+  margin: 0.5rem 0 0 0;
+  padding: 0;
+}
+
+.tool-shortcuts kbd {
+  display: inline-block;
+  font-family: "SF Mono", "Menlo", monospace;
+  font-size: 0.75rem;
+  background: #f0f0f0;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  padding: 0.1rem 0.4rem;
+  min-width: 1.5rem;
+  text-align: center;
+  margin-right: 0.35rem;
+}
+
+body.dark .tools-intro,
+body.dark .tool-card > p,
+body.dark .tool-instructions ol {
+  color: #aaa;
+}
+
+body.dark .tool-card {
+  border-top-color: #333;
+}
+
+body.dark .tool-instructions summary {
+  color: #888;
+}
+
+body.dark .tool-download {
+  color: #e0e0e0;
+  border-color: #444;
+}
+
+body.dark .tool-download:hover {
+  border-color: #e0e0e0;
+  background: #222;
+}
+
+body.dark .tool-instructions code {
+  background: #2a2a2a;
+  color: #ccc;
+}
+
+body.dark .tool-shortcuts kbd {
+  background: #2a2a2a;
+  border-color: #444;
+  color: #ccc;
 }
 
 /* Project prev/next nav */
