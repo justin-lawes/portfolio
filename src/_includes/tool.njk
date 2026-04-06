@@ -11,7 +11,7 @@ layout: base.njk
         <span class="tool-platform">{{ platform }}</span>
       </div>
       <div class="tool-downloads">
-        <a href="{{ downloadUrl }}" class="tool-download">Download ZIP</a>
+        <a href="{{ downloadUrl }}" class="tool-download">{{ downloadLabel if downloadLabel else "Download ZIP" }}</a>
         <a href="{{ githubUrl }}" class="tool-download tool-download-secondary">View on GitHub</a>
       </div>
       {{ content | safe }}
