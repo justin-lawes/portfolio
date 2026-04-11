@@ -465,6 +465,15 @@ a.tool-card-link:hover h2 {
   flex-wrap: wrap;
 }
 
+.tool-screenshot {
+  display: block;
+  max-width: 320px;
+  width: 100%;
+  margin-top: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+}
+
 .tool-download:hover {
   border-color: #1a1a1a;
   background: #f5f5f5;

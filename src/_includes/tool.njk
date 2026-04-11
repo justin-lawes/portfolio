@@ -26,6 +26,9 @@ passwordHash: b17318c0e3fe363284ff1e72a005207efb4c0d15c788951d6de04cae06ead1d0
         <a href="{{ downloadUrl }}" class="tool-download">{{ downloadLabel if downloadLabel else "Download ZIP" }}</a>
         <a href="{{ githubUrl }}" class="tool-download tool-download-secondary">View on GitHub</a>
       </div>
+      {% if screenshot %}
+      <img src="{{ screenshot }}" alt="{{ title }} screenshot" class="tool-screenshot">
+      {% endif %}
       {{ content | safe }}
     </div>
   </div>
