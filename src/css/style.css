@@ -412,6 +412,20 @@ body.dark .about-separator {
   margin-bottom: 2.5rem;
 }
 
+.tools-category {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #888;
+  margin-top: 2.5rem;
+  margin-bottom: 0;
+}
+
+.tools-group {
+  margin-bottom: 1rem;
+}
+
 .tool-card {
   border-top: 1px solid #e0e0e0;
   padding: 1.5rem 0;
@@ -423,11 +437,13 @@ a.tool-card-link {
   color: inherit;
 }
 
-a.tool-card-link:hover h2 {
+a.tool-card-link:hover h2,
+a.tool-card-link:hover h3 {
   text-decoration: underline;
 }
 
-.tool-card h2 {
+.tool-card h2,
+.tool-card h3 {
   font-size: 1.1rem;
   font-weight: 500;
   margin-bottom: 0.35rem;
@@ -534,6 +550,10 @@ a.tool-card-link:hover h2 {
   min-width: 1.5rem;
   text-align: center;
   margin-right: 0.35rem;
+}
+
+body.dark .tools-category {
+  color: #666;
 }
 
 body.dark .tools-intro,

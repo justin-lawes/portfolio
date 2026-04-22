@@ -21,15 +21,21 @@ passwordHash: b17318c0e3fe363284ff1e72a005207efb4c0d15c788951d6de04cae06ead1d0
     <h1>Tools</h1>
     <p class="tools-intro">Apps and utilities for beta testing. Grab what you need and let me know how it goes.</p>
 
-    {% for tool in collections.tools %}
-    <a href="{{ tool.url | url }}" class="tool-card tool-card-link">
-      <h2>{{ tool.data.title }}</h2>
-      <p>{{ tool.data.description }}</p>
-      <div class="tool-meta">
-        <span class="tool-version">{{ tool.data.version }}</span>
-        <span class="tool-platform">{{ tool.data.platform }}</span>
-      </div>
-    </a>
+    {% set categories = ["After Effects", "Ableton", "Windows"] %}
+    {% for category in categories %}
+    <h2 class="tools-category">{{ category }}</h2>
+    <div class="tools-group">
+      {% for tool in collections.tools %}{% if tool.data.category == category %}
+      <a href="{{ tool.url | url }}" class="tool-card tool-card-link">
+        <h3>{{ tool.data.title }}</h3>
+        <p>{{ tool.data.description }}</p>
+        <div class="tool-meta">
+          <span class="tool-version">{{ tool.data.version }}</span>
+          <span class="tool-platform">{{ tool.data.platform }}</span>
+        </div>
+      </a>
+      {% endif %}{% endfor %}
+    </div>
     {% endfor %}
 
   </div>
