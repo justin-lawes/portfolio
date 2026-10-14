@@ -37,10 +37,10 @@ module.exports = function (eleventyConfig) {
 
   // Prev/next for a project when the visitor arrived directly (no listing page
   // stored its order): use the first section list that contains the project.
-  const sections = require("./src/_data/sections.json");
+  const sectionOrder = require("./src/_data/sectionOrder.json");
   eleventyConfig.addFilter("sectionNeighbors", function (slug) {
-    const lists = [sections.featured, sections.work, sections.play,
-      [...sections.musicAlbums, ...sections.musicScores]];
+    const lists = [sectionOrder.featured, sectionOrder.work, sectionOrder.play,
+      [...sectionOrder.musicAlbums, ...sectionOrder.musicScores]];
     const list = lists.find((l) => l.includes(slug));
     if (!list) return {};
     const i = list.indexOf(slug);
@@ -60,6 +60,50 @@ module.exports = function (eleventyConfig) {
       loading: "lazy",
       decoding: "async",
     },
+  });
+
+  // Link-preview image: a 1200px JPEG copy instead of the multi-MB original.
+  const Image = require("@11ty/eleventy-img");
+  const ogJobs = [];
+  eleventyConfig.addFilter("ogImage", function (src) {
+    const site = "https://justinlawes.com";
+    if (!/\.(jpe?g|png|webp)$/i.test(src)) return site + src;
+    const opts = {
+      widths: [1200],
+      formats: ["jpeg"],
+      outputDir: require("path").join(eleventyConfig.directories.output, "img", "og"),
+      urlPath: "/img/og/",
+      sharpJpegOptions: { quality: 82 },
+    };
+    ogJobs.push(Image("./src" + src, opts));
+    return site + Image.statsSync("./src" + src, opts).jpeg[0].url;
+  });
+
+  // src/images is passed through whole, but pages mostly use the optimised
+  // copies in /img/. After the build, drop originals nothing references.
+  eleventyConfig.on("eleventy.after", async () => {
+    await Promise.all(ogJobs.splice(0));
+    const fs = require("fs");
+    const path = require("path");
+    const out = eleventyConfig.directories.output;
+    const imagesDir = path.join(out, "images");
+    if (!fs.existsSync(imagesDir)) return;
+    const walk = (d) => fs.readdirSync(d, { withFileTypes: true })
+      .flatMap((e) => (e.isDirectory() ? walk(path.join(d, e.name)) : [path.join(d, e.name)]));
+    const referenced = new Set();
+    for (const file of walk(out)) {
+      if (!/\.(html|css|js|xml|json|txt)$/.test(file)) continue;
+      const text = fs.readFileSync(file, "utf8");
+      for (const m of text.matchAll(/\/images\/[^"'()\s,<>]+/g)) {
+        referenced.add(decodeURIComponent(m[0].split(/[?#]/)[0]));
+      }
+    }
+    let removed = 0, bytes = 0;
+    for (const file of walk(imagesDir)) {
+      const url = "/" + path.relative(out, file).split(path.sep).join("/");
+      if (!referenced.has(url)) { bytes += fs.statSync(file).size; fs.unlinkSync(file); removed++; }
+    }
+    console.log(`[prune-images] removed ${removed} unreferenced files (${Math.round(bytes / 1048576)} MB)`);
   });
 
   return {

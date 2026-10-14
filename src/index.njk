@@ -4,7 +4,7 @@ activeNav: featured
 ---
 <main id="main">
   <p class="page-intro">Justin Lawes is a freelance motion designer based in Portland, OR.<br>Say <a href="mailto:justin.lawes@gmail.com">hello</a>.</p>
-  {% set projectOrder = sections.featured %}
+  {% set projectOrder = sectionOrder.featured %}
   <div class="project-grid">
     {%- for slug in projectOrder %}
     {%- for project in collections.projects %}

@@ -3,7 +3,7 @@ layout: base.njk
 activeNav: work
 ---
 <main id="main">
-  {% set projectOrder = sections.work %}
+  {% set projectOrder = sectionOrder.work %}
   <div class="project-grid">
     {%- for slug in projectOrder %}
     {%- for project in collections.projects %}
