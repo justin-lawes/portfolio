@@ -97,7 +97,7 @@ layout: base.njk
     <div class="image-grid image-grid-{{ section.columns }}{% if section.padded %} image-grid-padded{% endif %}{% if section.bg %} image-grid-bg{% endif %}"{% if section.maxWidth %} style="max-width: {{ section.maxWidth }}; margin-left: auto; margin-right: auto;"{% endif %}>
       {% for img in section.images %}
       {% if '.mp4' in img.src %}
-      <video src="{{ img.src | url }}" autoplay loop muted playsinline></video>
+      <video src="{{ img.src | url }}" loop muted playsinline preload="metadata" data-lazyplay></video>
       {% else %}
       <img src="{{ img.src | url }}" alt="{{ title }}" loading="lazy"{% if '.gif' in img.src %} eleventy:ignore{% endif %}>
       {% endif %}
@@ -115,7 +115,7 @@ layout: base.njk
       {% if section.images %}
       {% for img in section.images %}
       {% if '.mp4' in img.src %}
-      <video src="{{ img.src | url }}" autoplay loop muted playsinline></video>
+      <video src="{{ img.src | url }}" loop muted playsinline preload="metadata" data-lazyplay></video>
       {% else %}
       <img src="{{ img.src | url }}" alt="{{ title }}" loading="lazy"{% if '.gif' in img.src %} eleventy:ignore{% endif %}>
       {% endif %}
@@ -127,7 +127,7 @@ layout: base.njk
     <div class="project-images">
       {% for img in section.images %}
       {% if '.mp4' in img.src %}
-      <video src="{{ img.src | url }}" autoplay loop muted playsinline{% if img.wide %} class="wide"{% endif %}></video>
+      <video src="{{ img.src | url }}" loop muted playsinline preload="metadata" data-lazyplay{% if img.wide %} class="wide"{% endif %}></video>
       {% else %}
       <img src="{{ img.src | url }}" alt="{{ title }}" loading="lazy"{% if img.wide %} class="wide"{% endif %}{% if '.gif' in img.src %} eleventy:ignore{% endif %}>
       {% endif %}
@@ -174,7 +174,7 @@ layout: base.njk
   <div class="project-images">
     {% for img in images %}
     {% if '.mp4' in img.src %}
-    <video src="{{ img.src | url }}" autoplay loop muted playsinline{% if img.wide %} class="wide"{% endif %}></video>
+    <video src="{{ img.src | url }}" loop muted playsinline preload="metadata" data-lazyplay{% if img.wide %} class="wide"{% endif %}></video>
     {% else %}
     <img src="{{ img.src | url }}" alt="{{ title }}" loading="lazy"{% if img.wide %} class="wide"{% endif %}{% if '.gif' in img.src %} eleventy:ignore{% endif %}>
     {% endif %}
@@ -240,3 +240,20 @@ layout: base.njk
 })();
 </script>
 {% endif %}
+<script>
+// Loop videos load only their metadata up front and play once on screen.
+(function() {
+  var videos = document.querySelectorAll('video[data-lazyplay]');
+  if (!('IntersectionObserver' in window)) {
+    videos.forEach(function(v) { v.play().catch(function() {}); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) e.target.play().catch(function() {});
+      else e.target.pause();
+    });
+  }, { rootMargin: '200px 0px' });
+  videos.forEach(function(v) { io.observe(v); });
+})();
+</script>

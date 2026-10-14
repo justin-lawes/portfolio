@@ -8,8 +8,13 @@
   <meta property="og:title" content="{{ title }}{% if title %} — {% endif %}Justin Lawes">
   <meta property="og:description" content="{{ description if description else 'Freelance motion designer based in Portland, OR.' }}">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="{{ thumbnail if thumbnail else '/images/og-image.jpg' | url }}">
+  {%- set siteUrl = "https://justinlawes.com" %}
+  {%- set ogImage = siteUrl + (thumbnail if thumbnail else '/images/og-image.jpg') %}
+  <link rel="canonical" href="{{ siteUrl }}{{ page.url }}">
+  <meta property="og:url" content="{{ siteUrl }}{{ page.url }}">
+  <meta property="og:image" content="{{ ogImage }}">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="{{ ogImage }}">
   <link rel="icon" href="{{ '/images/favicon-32x32.png' | url }}" type="image/png" sizes="32x32">
   <link rel="icon" href="{{ '/images/favicon.ico' | url }}" sizes="any">
   <link rel="apple-touch-icon" href="{{ '/images/apple-touch-icon.png' | url }}">
@@ -21,6 +26,9 @@
   <link rel="stylesheet" href="{{ '/css/style.min.css' | url }}">
 </head>
 <body class="dark">
+  <script>
+    try { if (localStorage.getItem('dark') === 'false') document.body.classList.remove('dark'); } catch (e) {}
+  </script>
   <a href="#main" class="skip-link">Skip to content</a>
   <nav aria-label="Main navigation">
     <a href="{{ '/' | url }}" class="logo"><img src="{{ '/images/logo.png' | url }}" alt="Justin Lawes — Home"></a>
@@ -37,10 +45,10 @@
 
   <footer>
     <p>&copy; 2026 Justin Lawes</p>
-    <button class="dark-mode-toggle" aria-label="Toggle dark mode" onclick="document.body.classList.toggle('dark'); localStorage.setItem('dark', document.body.classList.contains('dark')); this.textContent = document.body.classList.contains('dark') ? '☀' : '☾'">☀</button>
+    <button class="dark-mode-toggle" aria-label="Toggle dark mode" onclick="document.body.classList.toggle('dark'); try { localStorage.setItem('dark', document.body.classList.contains('dark')); } catch (e) {} this.textContent = document.body.classList.contains('dark') ? '☀' : '☾'">☀</button>
   </footer>
   <script>
-    if (localStorage.getItem('dark') === 'false') document.body.classList.remove('dark');
+    document.querySelector('.dark-mode-toggle').textContent = document.body.classList.contains('dark') ? '☀' : '☾';
   </script>
 </body>
 </html>
