@@ -5,6 +5,8 @@ pages:
   - featured
   - work
 video: "813327515"
+videoAspectRatio: "1 / 1"
+videoMaxWidth: "56.25%"
 videoLoop: true
 videoColor: "d39a45"
 description: Smith & Diction invited me to animate their gorgeous logo for Exposure.

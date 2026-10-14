@@ -4,6 +4,8 @@ thumbnail: /images/sitting.jpg
 pages:
   - play
 video: "818158649"
+videoAspectRatio: "1 / 1"
+videoMaxWidth: "56.25%"
 videoLoop: true
 videoColor: "d39a45"
 sections:
