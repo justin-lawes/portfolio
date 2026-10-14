@@ -40,7 +40,7 @@ layout: base.njk
   {% if videoSideBySide %}
   <div class="video-pair">
     <div class="project-video">
-      <iframe src="{{ video | videoSrc({autoplay: videoLoop and not videoControls, loop: videoLoop, controls: (false if (videoLoop and not videoControls) else null), color: videoColor}) }}" style="aspect-ratio: {{ videoAspectRatio if videoAspectRatio else '16 / 9' }}; border: none; width: 100%; display: block;" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="{{ title }}"></iframe>
+      <iframe src="{{ video | videoSrc({autoplay: videoLoop and not videoControls, loop: videoLoop, controls: (false if (videoLoop and not videoControls) else null), color: videoColor, hash: videoHash, full: true}) }}" style="aspect-ratio: {{ videoAspectRatio if videoAspectRatio else '16 / 9' }}; border: none; width: 100%; display: block;" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="{{ title }}"></iframe>
     </div>
     {% for ev in extraVideos %}
     <div class="project-video">
@@ -53,7 +53,7 @@ layout: base.njk
     {% if videoLoop and not videoControls %}
     <iframe src="{{ video | videoSrc({autoplay: true, loop: true, controls: false, color: videoColor}) }}" style="aspect-ratio: {{ videoAspectRatio if videoAspectRatio else '16 / 9' }}; border: none; width: 100%; display: block;" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="{{ title }}"></iframe>
     {% else %}
-    <iframe src="{{ video | videoSrc({loop: videoLoop, color: videoColor}) }}" style="aspect-ratio: {{ videoAspectRatio if videoAspectRatio else '16 / 9' }}; border: none; width: 100%; display: block;" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="{{ title }}"></iframe>
+    <iframe src="{{ video | videoSrc({loop: videoLoop, color: videoColor, hash: videoHash, full: true}) }}" style="aspect-ratio: {{ videoAspectRatio if videoAspectRatio else '16 / 9' }}; border: none; width: 100%; display: block;" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="{{ title }}"></iframe>
     {% endif %}
   </div>
   {% endif %}

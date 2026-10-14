@@ -9,7 +9,7 @@ module.exports = function (eleventyConfig) {
 
   // Builds a video iframe src from a Vimeo ID. Videos migrated to FrameRate
   // (listed in src/_data/framerate.json) use the FrameRate player; anything
-  // else falls back to Vimeo and warns at build time.
+  // else keeps its original Vimeo embed.
   const framerateIds = require("./src/_data/framerate.json");
   eleventyConfig.addFilter("videoSrc", function (id, opts = {}) {
     const color = opts.color ? String(opts.color).replace(/^#/, "") : "";
@@ -23,12 +23,14 @@ module.exports = function (eleventyConfig) {
       p.push("theme=minimal");
       return `https://framerate.tv/embed/${fr}?${p.join("&")}`;
     }
-    console.warn(`[videoSrc] Vimeo ${id} has no FrameRate ID; still using Vimeo`);
+    // Kept on Vimeo on purpose (e.g. Blend): rebuild the original embed URL.
     const p = [];
+    if (opts.hash) p.push(`h=${opts.hash}`);
     if (opts.autoplay) p.push("autoplay=1", "muted=1", "autopause=0");
     if (opts.loop) p.push("loop=1");
     if (opts.controls === false) p.push("controls=0");
     p.push("title=0&byline=0&portrait=0&like=0&share=0&watchlater=0");
+    if (opts.full) p.push("pip=0&cc=0&transcript=0&save=0&collections=0");
     if (color) p.push(`color=${color}`);
     return `https://player.vimeo.com/video/${id}?${p.join("&")}`;
   });
