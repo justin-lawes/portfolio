@@ -20,8 +20,10 @@ eleventyExcludeFromCollections: true
     <loc>https://justinlawes.com/about/</loc>
   </url>
   {%- for project in collections.projects %}
+  {%- if not project.data.passwordHash %}
   <url>
     <loc>https://justinlawes.com{{ project.url }}</loc>
   </url>
+  {%- endif %}
   {%- endfor %}
 </urlset>

@@ -8,6 +8,9 @@
   <meta property="og:title" content="{{ title }}{% if title %} — {% endif %}Justin Lawes">
   <meta property="og:description" content="{{ description if description else 'Freelance motion designer based in Portland, OR.' }}">
   <meta property="og:type" content="website">
+  {%- if passwordHash %}
+  <meta name="robots" content="noindex">
+  {%- endif %}
   {%- set siteUrl = "https://justinlawes.com" %}
   {%- set ogImage = siteUrl + (thumbnail if thumbnail else '/images/og-image.jpg') %}
   <link rel="canonical" href="{{ siteUrl }}{{ page.url }}">

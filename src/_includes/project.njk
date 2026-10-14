@@ -1,11 +1,10 @@
 ---
 layout: base.njk
 ---
-{% set prevProject = collections.projects | getPreviousCollectionItem %}
-{% set nextProject = collections.projects | getNextCollectionItem %}
+{% set neighbors = page.fileSlug | sectionNeighbors %}
 <nav class="project-nav" aria-label="Project navigation">
-  <a href="{{ prevProject.url | url if prevProject else '#' }}" class="project-nav-prev" aria-label="Previous project"{% if not prevProject %} hidden{% endif %}>←</a>
-  <a href="{{ nextProject.url | url if nextProject else '#' }}" class="project-nav-next" aria-label="Next project"{% if not nextProject %} hidden{% endif %}>→</a>
+  <a href="{{ neighbors.prev | url if neighbors.prev else '#' }}" class="project-nav-prev" aria-label="Previous project"{% if not neighbors.prev %} hidden{% endif %}>←</a>
+  <a href="{{ neighbors.next | url if neighbors.next else '#' }}" class="project-nav-next" aria-label="Next project"{% if not neighbors.next %} hidden{% endif %}>→</a>
 </nav>
 <script>
 (function() {

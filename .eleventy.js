@@ -35,13 +35,26 @@ module.exports = function (eleventyConfig) {
     return `https://player.vimeo.com/video/${id}?${p.join("&")}`;
   });
 
+  // Prev/next for a project when the visitor arrived directly (no listing page
+  // stored its order): use the first section list that contains the project.
+  const sections = require("./src/_data/sections.json");
+  eleventyConfig.addFilter("sectionNeighbors", function (slug) {
+    const lists = [sections.featured, sections.work, sections.play,
+      [...sections.musicAlbums, ...sections.musicScores]];
+    const list = lists.find((l) => l.includes(slug));
+    if (!list) return {};
+    const i = list.indexOf(slug);
+    const url = (s) => (s ? `/projects/${s}/` : null);
+    return { prev: url(list[i - 1]), next: url(list[i + 1]) };
+  });
+
   eleventyConfig.addPlugin(eleventyImageTransformPlugin, {
     extensions: "html",
     formats: ["webp"],
-    widths: [400, 800, 1200, "auto"],
+    widths: [400, 800, 1200, 1600],
     transformOnRequest: false,
     sharpWebpOptions: {
-      quality: 90,
+      quality: 80,
     },
     defaultAttributes: {
       loading: "lazy",
