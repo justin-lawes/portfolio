@@ -1173,3 +1173,15 @@ body.dark .dark-mode-toggle:hover {
     padding: 1.5rem 1.25rem;
   }
 }
+
+/* Loading placeholder: grey box with a spinner behind video players and loop
+   videos, covered once the video draws its first frame. */
+.project-video iframe,
+.project-detail video {
+  background: #e6e6e6 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='12' fill='none' stroke='%23888' stroke-opacity='.2' stroke-width='3'/%3E%3Cpath d='M16 4a12 12 0 0 1 12 12' fill='none' stroke='%23888' stroke-width='3' stroke-linecap='round'%3E%3CanimateTransform attributeName='transform' type='rotate' from='0 16 16' to='360 16 16' dur='0.9s' repeatCount='indefinite'/%3E%3C/path%3E%3C/svg%3E") center / 32px no-repeat;
+}
+
+body.dark .project-video iframe,
+body.dark .project-detail video {
+  background: #1c1c1c url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='12' fill='none' stroke='%23aaa' stroke-opacity='.2' stroke-width='3'/%3E%3Cpath d='M16 4a12 12 0 0 1 12 12' fill='none' stroke='%23aaa' stroke-width='3' stroke-linecap='round'%3E%3CanimateTransform attributeName='transform' type='rotate' from='0 16 16' to='360 16 16' dur='0.9s' repeatCount='indefinite'/%3E%3C/path%3E%3C/svg%3E") center / 32px no-repeat;
+}
