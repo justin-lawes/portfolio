@@ -2,3 +2,6 @@ node_modules/
 _site/
 .cache/
 .DS_Store
+
+# Local Claude permissions (machine-specific, may contain secrets)
+.claude/settings.local.json
