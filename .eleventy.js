@@ -62,6 +62,19 @@ module.exports = function (eleventyConfig) {
     },
   });
 
+  // style.min.css is generated from src/css/style.css on every build; edit
+  // style.css only.
+  eleventyConfig.on("eleventy.after", () => {
+    const fs = require("fs");
+    const path = require("path");
+    const CleanCSS = require("clean-css");
+    const result = new CleanCSS({ level: 1 }).minify(fs.readFileSync("src/css/style.css", "utf8"));
+    if (result.errors.length) throw new Error("CSS minify failed: " + result.errors.join("; "));
+    const outFile = path.join(eleventyConfig.directories.output, "css", "style.min.css");
+    fs.mkdirSync(path.dirname(outFile), { recursive: true });
+    fs.writeFileSync(outFile, result.styles);
+  });
+
   // Link-preview image: a 1200px JPEG copy instead of the multi-MB original.
   const Image = require("@11ty/eleventy-img");
   const ogJobs = [];
